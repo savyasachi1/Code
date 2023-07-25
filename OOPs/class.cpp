@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 class forest
@@ -7,7 +8,9 @@ class forest
     public:
     string name;
     string color;
-    char* sound;
+    string sound;
+
+    static int num;
 
 
     // default constructor
@@ -16,25 +19,17 @@ class forest
         cout << "Default Constructer called" << endl;
     }
 
-    // copy constructor
-    forest(forest& temp)
-    {
-        char *ch = new char[10];
-        strcpy(ch, temp.sound);
-        cout<<"Copy constructor called"<<endl;
-        this->name = temp.name;
-        this->color = temp.color;
-        this->sound = ch;
-    }
-
     //parameterized constructer
-    forest(string name, string color, char* sound)
+    forest(string name, string color)
     {
         cout << "Parameterized constructer called" << endl;
         this->name = name;
         this->color = color;
         this->sound = sound;
     }
+
+    // copy constructor to learn, deep copy, shallow copy
+
     //print
     void print()
     {
@@ -52,6 +47,7 @@ class forest
     {
         return color;
     }
+    
 
     //setter
     void setName(string n)
@@ -62,24 +58,38 @@ class forest
     {
         this->color = c;
     }
-    void setSound(char* s){
+    void setSound(string s){
         this->sound = s;
+    }
+    ~forest(){
+        cout<<"Destructor called for "<<this->name<<endl;
+    }
+    static int getvar(){
+        cout<<"static function"<<endl;
+        return num;
     }
 };
 
+//initilizing static int
+int forest::num=10;
+
 int main()
 {
+    cout<<forest::num<<endl;
     forest animal1;
     animal1.setName("lion");
     animal1.setColor("brown");
-    char str[5]="roar";
+    string str="roar";
+    cout<<animal1.num<<endl;;
     animal1.setSound(str);
     // cout<<animal1.getName()<<" "<<animal1.getColor()<<endl;
     animal1.print();
-    forest *animal2 = new forest("cat", "black", "meow");
+    cout<<forest::getvar()<<endl;
+    forest *animal2 = new forest("cat", "black");
     animal2->print();
     forest animal3(animal1);
     animal3.sound[2]='g';
     animal3.print();
     animal1.print();
+    delete animal2;
 }
