@@ -20,7 +20,7 @@ void print(char* str, int size){
 
 int main()
 {
-    char arr[50]="savyasachiisagoodboy";
+    char arr[50]="savyasachi is a good boy";
     // arr[14]='p';
     char *ptr=arr;
     cout<<&ptr<<endl;
