@@ -32,25 +32,39 @@ void print(Node *&head)
     cout << endl;
 }
 
-void reverse(Node *&head)
+// void reverse(Node *&head)
+// {
+//     Node *curr = head->next;
+//     Node *prev = head;
+//     head->next = NULL;
+//     Node *temp = NULL;
+//     while (curr != NULL)
+//     {
+//         temp = curr->next;
+//         curr->next = prev;
+//         prev = curr;
+//         curr = temp;
+//     }
+//     head = prev;
+// }
+
+void reverseNode(Node *&head, Node *curr, Node *prev)
 {
-    Node *curr = head->next;
-    Node *prev = head;
-    head->next = NULL;
-    Node *temp = NULL;
-    while (curr != NULL)
+    if (curr == NULL)
     {
-        temp = curr->next;
-        curr->next = prev;
-        prev = curr;
-        curr = temp;
+        head = prev;
+        return;
     }
-    head = prev;
+    reverseNode(head, curr->next, curr);
+    curr->next = prev;
 }
 
-// void reverse(Node* &head){
-
-// }
+void reverse(Node *&head)
+{
+    Node *curr = head;
+    Node *prev = NULL;
+    reverseNode(head, curr, prev);
+}
 
 int main()
 {
