@@ -5,12 +5,14 @@ class Queue{
     public:
     int* arr;
     int size;
+    int head;
     int tail;
 
     Queue(int size){
         arr = new int[size-1];
         this->size = size-1;
         tail = -1;
+        head = 0;
     }
 
     void push(int data){
@@ -24,33 +26,43 @@ class Queue{
     }
 
     void pop(){
-        int temp = arr[0];
-        for(int i=0;i<tail;i++){
-            arr[i]=arr[i+1];
-        }
-        cout<<"Element poped is- "<<temp<<endl;
-        tail--;
+        // int temp = arr[0];
+        // for(int i=0;i<tail;i++){
+        //     arr[i]=arr[i+1];
+        // }
+        cout<<"Element poped is- "<<arr[head]<<endl;
+        head++;
     }
 
-    void top(){
-        if(tail<0){
+    void front(){
+        if(tail-head<0){
             cout<<"Queue empty"<<endl;
             return;
         }
         cout<<arr[0]<<endl;
     }
-    void print(){
-        if(tail<0){
+
+    void back(){
+        if(tail-head<0){
             cout<<"Queue empty"<<endl;
             return;
         }
-        for( int i=0;i<=tail;i++){
+        cout<<arr[tail]<<endl;
+    }
+
+
+    void print(){
+        if(tail-head<0){
+            cout<<"Queue empty"<<endl;
+            return;
+        }
+        for( int i=head;i<=tail;i++){
             cout<<arr[i]<<" ";
         }
         cout<<endl;
     }
     void empty(){
-        if(tail<0)
+        if(tail-head<0)
             cout<<"Queue empty"<<endl;
         else 
             cout<<"Not empty"<<endl;
@@ -65,13 +77,15 @@ int main()
     q.push(30);
     q.push(40);
     q.push(50);
+    q.back();
     q.push(50);
-    q.top();
+    q.front();
     q.print();
     q.pop();
     q.print();
-    q.top();
+    q.front();
     q.empty();
+    q.back();
     q.pop();
     cout<<q.tail+1<<endl;
     q.pop();

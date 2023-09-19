@@ -28,6 +28,7 @@ void insersionsort(int arr[], int n)
             }
         }
         arr[j + 1] = temp;
+    printarray(arr, n);
     }
 }
 
@@ -35,7 +36,6 @@ int main()
 {
     int arr[] = {6, 7, 5, 7, 4, 6, 3, 23, 34, 23, 45, 57, 53, 23, 3, 2, 8, 8, 9};
     int n = sizeof(arr) / sizeof(int);
-    printarray(arr, n);
     insersionsort(arr, n);
     printarray(arr, n);
 }
