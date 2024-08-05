@@ -1,0 +1,24 @@
+h2
+{ 
+ color: rgb(59, 0, 102); 
+ background-color: rgb(207, 203, 138); 
+ font-family:Arial, Helvetica, sans-serif 
+} 
+#x
+{ 
+ color: rgb(6, 110, 32); 
+ background: powderblue; 
+} 
+.y
+{ 
+ background-color:lightgoldenrodyellow; 
+ font-size: large; 
+ color: palevioletred; 
+} 
+h1
+{ 
+ text-align: center; 
+ width: 50%; 
+ font-weight: 400; 
+ text-decoration:rgb(166, 111, 228) underline wavy; 
+}
